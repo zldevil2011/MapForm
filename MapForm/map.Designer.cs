@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
-            this.BeginBlink = new System.Windows.Forms.Button();
-            this.StopBlink = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gmap
@@ -57,38 +55,16 @@
             this.gmap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmap.ShowTileGridLines = false;
-            this.gmap.Size = new System.Drawing.Size(730, 410);
+            this.gmap.Size = new System.Drawing.Size(825, 410);
             this.gmap.TabIndex = 0;
             this.gmap.Zoom = 0D;
             this.gmap.Load += new System.EventHandler(this.gmap_Load);
-            // 
-            // BeginBlink
-            // 
-            this.BeginBlink.Location = new System.Drawing.Point(738, 271);
-            this.BeginBlink.Name = "BeginBlink";
-            this.BeginBlink.Size = new System.Drawing.Size(75, 23);
-            this.BeginBlink.TabIndex = 1;
-            this.BeginBlink.Text = "BeginBlink";
-            this.BeginBlink.UseVisualStyleBackColor = true;
-            this.BeginBlink.Click += new System.EventHandler(this.BeginBlink_Click);
-            // 
-            // StopBlink
-            // 
-            this.StopBlink.Location = new System.Drawing.Point(738, 318);
-            this.StopBlink.Name = "StopBlink";
-            this.StopBlink.Size = new System.Drawing.Size(75, 23);
-            this.StopBlink.TabIndex = 2;
-            this.StopBlink.Text = "StopBlink";
-            this.StopBlink.UseVisualStyleBackColor = true;
-            this.StopBlink.Click += new System.EventHandler(this.StopBlink_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 410);
-            this.Controls.Add(this.StopBlink);
-            this.Controls.Add(this.BeginBlink);
             this.Controls.Add(this.gmap);
             this.Name = "Form1";
             this.Text = "machine_map";
@@ -99,8 +75,6 @@
         #endregion
 
         private GMap.NET.WindowsForms.GMapControl gmap;
-        private System.Windows.Forms.Button BeginBlink;
-        private System.Windows.Forms.Button StopBlink;
     }
 }
 

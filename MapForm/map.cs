@@ -60,7 +60,8 @@ namespace MapForm
                     marker.View +=  "\n" + m_list[cnt].View[i];
                 }
                 marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
-                marker.ToolTipText = string.Format("经度：{0}\n纬度：{1}\n是否异常：{2}{3}", marker.Longitude, marker.Latitude, marker.IsFlash, marker.View);
+                string status = marker.IsFlash ? "异常" : "正常";
+                marker.ToolTipText = string.Format("经度：{0}\n纬度：{1}\n状态：{2}{3}", marker.Longitude, marker.Latitude, status, marker.View);
                 objects.Markers.Add(marker);
                 try
                 {
@@ -89,6 +90,7 @@ namespace MapForm
             gmap.OnMarkerClick += new MarkerClick(gmap_OnMarkerClick);
             gmap.OnMarkerEnter += new MarkerEnter(gmap_OnMarkerEnter);
             gmap.OnMarkerLeave += new MarkerLeave(gmap_OnMarkerLeave);
+            load_Flash();
         }
         void gmap_MouseClick(object sender, MouseEventArgs e)
         {
@@ -195,20 +197,20 @@ namespace MapForm
             m_list[num++] = tmp3;
 
         }
-        private void BeginBlink_Click(object sender, EventArgs e)
+        private void load_Flash()
         {
             blinkTimer.Interval = 100;
             blinkTimer.Tick += new EventHandler(blinkTimer_Tick);
             blinkTimer.Start();
+           
         }
-
         void blinkTimer_Tick(object sender, EventArgs e)
         {
-            foreach (GMapMarker m in objects.Markers)
+            foreach (GMapMarkerImage m in objects.Markers)
             {
-                if (m is GMapMarkerImage)
+                GMapMarkerImage marker = m as GMapMarkerImage;
+                if (m.IsFlash == true)
                 {
-                    GMapMarkerImage marker = m as GMapMarkerImage;
                     if (marker.OutPen == null)
                         marker.OutPen = new Pen(Brushes.Red, 2);
                     else
@@ -217,28 +219,10 @@ namespace MapForm
                         marker.OutPen = null;
                     }
                 }
+                gmap.Refresh();
             }
-            gmap.Refresh();
         }
 
-        private void StopBlink_Click(object sender, EventArgs e)
-        {
-            blinkTimer.Stop();
-            foreach (GMapMarker m in objects.Markers)
-            {
-                if (m is GMapMarkerImage)
-                {
-                    GMapMarkerImage marker = m as GMapMarkerImage;
-                    if (marker.OutPen != null)
-                    {
-                        marker.OutPen.Dispose();
-                        marker.OutPen = null;
-                    }
-                    
-                }
-            }
-            gmap.Refresh();
-        }
     }
 
     class GMapMarkerImage : GMapMarker
