@@ -44,7 +44,7 @@ namespace MapForm
             //int len = m_list.Length;
             for (int cnt = 0; cnt < num; ++cnt)
             {
-                Bitmap bitmap = Bitmap.FromFile("C:\\Users\\dell\\Documents\\Visual Studio 2010\\Projects\\WindowsFormsApplication6\\WindowsFormsApplication6\\images\\water1.png") as Bitmap;
+                Bitmap bitmap = Bitmap.FromFile(m_list[cnt].PathName) as Bitmap;
                 //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(m_list[cnt].longitude, m_list[cnt].latitude), bitmap);
                 GMapMarkerImage marker = new GMapMarkerImage(new PointLatLng( m_list[cnt].Latitude,m_list[cnt].Longitude), bitmap);
                 System.Console.WriteLine("Longitude: " + m_list[cnt].Longitude + "; Latitude: " + m_list[cnt].Latitude);
