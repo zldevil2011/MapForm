@@ -27,6 +27,15 @@ namespace MapForm
         public Form1()
         {
             InitializeComponent();
+            try
+            {
+                System.Net.IPHostEntry e = System.Net.Dns.GetHostEntry("www.google.com.hk");
+            }
+            catch
+            {
+                gmap.Manager.Mode = AccessMode.CacheOnly;
+                MessageBox.Show("No internet connection avaible, going to CacheOnly mode.", "GMap.NET Machine List", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             get_machine_data();
         }
 
@@ -47,8 +56,6 @@ namespace MapForm
                 Bitmap bitmap = Bitmap.FromFile(m_list[cnt].PathName) as Bitmap;
                 //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(m_list[cnt].longitude, m_list[cnt].latitude), bitmap);
                 GMapMarkerImage marker = new GMapMarkerImage(new PointLatLng( m_list[cnt].Latitude,m_list[cnt].Longitude), bitmap);
-                System.Console.WriteLine("Longitude: " + m_list[cnt].Longitude + "; Latitude: " + m_list[cnt].Latitude);
-                System.Console.WriteLine("come here&&&&&&&&&&&&&&&&&&&&&&&&");
                 marker.Longitude = m_list[cnt].Longitude;
                 marker.Latitude = m_list[cnt].Latitude;
                 marker.PathName = m_list[cnt].PathName;
@@ -82,7 +89,7 @@ namespace MapForm
                 System.Console.WriteLine("sorry for object");
             }
 
-            gmap.MouseClick += new MouseEventHandler(gmap_MouseClick);
+            //gmap.MouseClick += new MouseEventHandler(gmap_MouseClick);
             gmap.MouseDown += new MouseEventHandler(gmap_MouseDown);
             gmap.MouseUp += new MouseEventHandler(gmap_MouseUp);
             gmap.MouseMove += new MouseEventHandler(gmap_MouseMove);

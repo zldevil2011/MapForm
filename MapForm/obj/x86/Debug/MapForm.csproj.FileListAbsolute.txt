@@ -9,3 +9,7 @@ c:\users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\bin\Debug\GM
 c:\users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\bin\Debug\GMap.NET.WindowsForms.xml
 c:\users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\obj\x86\Debug\MapForm.exe
 c:\users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\obj\x86\Debug\MapForm.pdb
+C:\Users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\bin\Debug\MapForm.exe.manifest
+C:\Users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\bin\Debug\MapForm.application
+C:\Users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\obj\x86\Debug\MapForm.exe.manifest
+C:\Users\dell\documents\visual studio 2010\Projects\MapForm\MapForm\obj\x86\Debug\MapForm.application
